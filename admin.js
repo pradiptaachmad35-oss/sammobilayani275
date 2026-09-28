@@ -132,12 +132,16 @@ async function uploadPhotos(carId){
 loginForm.onsubmit=async e=>{
   e.preventDefault();
   showError('Memproses login...');
-  const email=document.getElementById('email').value.trim();
+  const username=document.getElementById('username').value.trim();
   const password=document.getElementById('password').value;
-  const {error}=await sb.auth.signInWithPassword({email,password});
+  if(username!=='admin'){
+    showError('Username atau password salah.');
+    return;
+  }
+  const {error}=await sb.auth.signInWithPassword({email:'admin@sammobilayani275.local',password});
   if(error){
     console.error(error);
-    showError('Email atau password salah.');
+    showError('Username atau password salah.');
     return;
   }
   showError('');
