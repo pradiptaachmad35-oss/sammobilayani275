@@ -135,13 +135,20 @@ loginForm.onsubmit=async e=>{
   const username=document.getElementById('username').value.trim();
   const password=document.getElementById('password').value;
   if(username!=='admin'){
-    showError('Username atau password salah.');
+    showError('Username harus admin.');
     return;
   }
-  const {error}=await sb.auth.signInWithPassword({email:'admin@sammobilayani275.local',password});
+  if(!password){
+    showError('Password wajib diisi.');
+    return;
+  }
+  const {error}=await sb.auth.signInWithPassword({
+    email:'admin@sammobilayani275.local',
+    password:password
+  });
   if(error){
-    console.error(error);
-    showError('Username atau password salah.');
+    console.error('Supabase login error:',error);
+    showError(error.message || 'Login gagal.');
     return;
   }
   showError('');
