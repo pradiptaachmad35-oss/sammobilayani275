@@ -1,56 +1,56 @@
-const cars=[
-{id:'1',brand:'Toyota',name:'Toyota Fortuner',model:'2.4 VRZ AT',year:2019,km:'65.000 km',price:515000000,status:'Tersedia',photos:['https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1200&q=85']},
-{id:'2',brand:'Honda',name:'Honda Civic',model:'1.5 Turbo',year:2017,km:'70.000 km',price:277000000,status:'Tersedia',photos:['https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=85']},
-{id:'3',brand:'Mitsubishi',name:'Mitsubishi Pajero Sport',model:'Dakar 4x2',year:2018,km:'86.000 km',price:410000000,status:'Tersedia',photos:['https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1200&q=85']},
-{id:'4',brand:'Honda',name:'Honda HR-V',model:'1.5 E CVT',year:2020,km:'55.000 km',price:295000000,status:'Stok Habis',photos:['https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1200&q=85']}
-];
 const brands=['Toyota','Mitsubishi','Honda','Daihatsu','Isuzu','Suzuki','Lainnya'];
 const brandLogos={Toyota:'toyota.png',Mitsubishi:'Mitsubishi.png',Honda:'honda.png',Daihatsu:'Daihatsu.png',Isuzu:'Isuzu.png',Suzuki:'suzuku.png'};
-let activeBrand='Semua',activeCar=null,photoIndex=0;
-const rupiah=n=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n);
-const brandGrid=document.getElementById('brandGrid');
-const catalog=document.getElementById('catalog');
-const empty=document.getElementById('emptyState');
+let cars=[],activeBrand='Semua',activeCar=null,photoIndex=0;
+const rupiah=n=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(Number(n||0));
+const brandGrid=document.getElementById('brandGrid'),catalog=document.getElementById('catalog'),empty=document.getElementById('emptyState');
 
 function renderBrands(){
- brandGrid.innerHTML=brands.map(b=>{
-  const logo=brandLogos[b];
-  return '<button class="brand-chip '+(activeBrand===b?'selected':'')+'" data-brand="'+b+'"><div class="brand-logo">'+(logo?'<img src="'+logo+'" alt="'+b+'">':'<span class="other-car">🚘</span>')+'</div><div class="brand-name">'+b+'</div></button>';
- }).join('');
- document.querySelectorAll('.brand-chip').forEach(btn=>btn.addEventListener('click',()=>setBrand(btn.dataset.brand)));
+  brandGrid.innerHTML=brands.map(b=>{
+    const logo=brandLogos[b];
+    return '<button class="brand-chip '+(activeBrand===b?'selected':'')+'" data-brand="'+b+'"><div class="brand-logo">'+(logo?'<img src="'+logo+'" alt="'+b+'">':'<span class="other-car">🚘</span>')+'</div><div class="brand-name">'+b+'</div></button>';
+  }).join('');
+  document.querySelectorAll('.brand-chip').forEach(btn=>btn.addEventListener('click',()=>setBrand(btn.dataset.brand)));
 }
 function renderCars(){
- const list=activeBrand==='Semua'?cars:cars.filter(c=>c.brand===activeBrand);
- catalog.innerHTML=list.map(c=>'<article class="car-card"><div class="car-image"><img src="'+c.photos[0]+'" alt="'+c.name+'"><span class="status '+(c.status!=='Tersedia'?'sold':'')+'">'+c.status+'</span></div><div class="car-info"><h3>'+c.name+'</h3><div class="car-model">'+c.model+'</div><div class="specs"><span>▣ '+c.year+'</span><span>◷ '+c.km+'</span></div><div class="price">'+rupiah(c.price)+'</div><button class="card-btn '+(c.status!=='Tersedia'?'disabled':'')+'" data-id="'+c.id+'">'+(c.status==='Tersedia'?'Lihat Detail →':'Stok Habis')+'</button></div></article>').join('');
- empty.classList.toggle('hidden',list.length>0);
- document.querySelectorAll('.card-btn:not(.disabled)').forEach(btn=>btn.addEventListener('click',()=>openDetail(btn.dataset.id)));
+  const list=activeBrand==='Semua'?cars:cars.filter(c=>c.brand===activeBrand);
+  catalog.innerHTML=list.map(c=>{
+    const photo=(c.photos&&c.photos[0])||'sam-storefront.jpeg';
+    const sold=c.status!=='Tersedia';
+    return '<article class="car-card"><div class="car-image"><img src="'+photo+'" alt="'+c.name+'" loading="lazy"><span class="status '+(sold?'sold':'')+'">'+c.status+'</span></div><div class="car-info"><h3>'+c.name+'</h3><div class="car-model">'+(c.model||'')+'</div><div class="specs"><span>▣ '+(c.year||'—')+'</span><span>◷ '+(c.km||'—')+'</span></div><div class="price">'+rupiah(c.price)+'</div><button class="card-btn '+(sold?'disabled':'')+'" data-id="'+c.id+'">'+(sold?'Stok Habis':'Lihat Detail →')+'</button></div></article>';
+  }).join('');
+  empty.classList.toggle('hidden',list.length>0);
+  document.querySelectorAll('.card-btn:not(.disabled)').forEach(btn=>btn.addEventListener('click',()=>openDetail(btn.dataset.id)));
 }
-function setBrand(brand){
- activeBrand=brand;
- renderBrands();
- renderCars();
- document.getElementById('stok').scrollIntoView({behavior:'smooth',block:'start'});
-}
-function openDetail(id){
- activeCar=cars.find(c=>c.id===id);
- photoIndex=0;
- updateModal();
- document.getElementById('detailModal').classList.remove('hidden');
- document.body.style.overflow='hidden';
-}
+function setBrand(brand){activeBrand=brand;renderBrands();renderCars();document.getElementById('stok').scrollIntoView({behavior:'smooth',block:'start'});}
+function openDetail(id){activeCar=cars.find(c=>c.id===id);photoIndex=0;updateModal();document.getElementById('detailModal').classList.remove('hidden');document.body.style.overflow='hidden';}
 function updateModal(){
- if(!activeCar)return;
- document.getElementById('detailImage').src=activeCar.photos[photoIndex];
- document.getElementById('photoDots').textContent=activeCar.photos.length>1?(photoIndex+1)+' / '+activeCar.photos.length:'';
- document.getElementById('detailBody').innerHTML='<span class="status '+(activeCar.status!=='Tersedia'?'sold':'')+'">'+activeCar.status+'</span><h2>'+activeCar.name+'</h2><div>'+activeCar.model+'</div><div class="detail-price">'+rupiah(activeCar.price)+'</div><div class="detail-specs"><div><span>Tahun</span><strong>'+activeCar.year+'</strong></div><div><span>Kilometer</span><strong>'+activeCar.km+'</strong></div><div><span>Transmisi</span><strong>'+(activeCar.transmission||'—')+'</strong></div><div><span>Warna</span><strong>'+(activeCar.color||'—')+'</strong></div><div><span>Kondisi</span><strong>Bekas</strong></div><div><span>Lokasi</span><strong>Surabaya</strong></div></div><p class="detail-desc">Hubungi SAM MOBIL untuk informasi unit, kondisi, kelengkapan surat, dan jadwal melihat kendaraan.</p><a class="wa-btn" href="https://wa.me/'+window.SAM_CONFIG.WHATSAPP_DEFAULT+'?text='+encodeURIComponent('Halo, saya tertarik dengan '+activeCar.name+' '+activeCar.model+' tahun '+activeCar.year+'. Apakah unit tersebut masih tersedia?')+'" target="_blank">WhatsApp — Tanyakan Unit</a>';
+  if(!activeCar)return;
+  const photos=activeCar.photos&&activeCar.photos.length?activeCar.photos:['sam-storefront.jpeg'];
+  document.getElementById('detailImage').src=photos[photoIndex];
+  document.getElementById('photoDots').textContent=photos.length>1?(photoIndex+1)+' / '+photos.length:'';
+  const sold=activeCar.status!=='Tersedia';
+  document.getElementById('detailBody').innerHTML='<span class="status '+(sold?'sold':'')+'">'+activeCar.status+'</span><h2>'+activeCar.name+'</h2><div>'+(activeCar.model||'')+'</div><div class="detail-price">'+rupiah(activeCar.price)+'</div><div class="detail-specs"><div><span>Tahun</span><strong>'+ (activeCar.year||'—') +'</strong></div><div><span>Kilometer</span><strong>'+ (activeCar.km||'—') +'</strong></div><div><span>Transmisi</span><strong>'+ (activeCar.transmission||'—') +'</strong></div><div><span>Warna</span><strong>'+ (activeCar.color||'—') +'</strong></div><div><span>Kondisi</span><strong>'+ (activeCar.condition||'Bekas') +'</strong></div><div><span>Lokasi</span><strong>Surabaya</strong></div></div><p class="detail-desc">'+(activeCar.description||'Hubungi SAM MOBIL untuk informasi unit, kondisi, kelengkapan surat, dan jadwal melihat kendaraan.')+'</p>'+(sold?'':'<a class="wa-btn" href="https://wa.me/'+window.SAM_CONFIG.WHATSAPP_DEFAULT+'?text='+encodeURIComponent('Halo, saya tertarik dengan '+activeCar.name+' '+(activeCar.model||'')+' tahun '+activeCar.year+'. Apakah unit tersebut masih tersedia?')+'" target="_blank" rel="noopener">WhatsApp — Tanyakan Unit</a>');
+  document.getElementById('prevPhoto').style.display=photos.length>1?'':'none';
+  document.getElementById('nextPhoto').style.display=photos.length>1?'':'none';
+}
+async function loadCars(){
+  try{
+    const client=window.supabase.createClient(window.SAM_CONFIG.SUPABASE_URL,window.SAM_CONFIG.SUPABASE_ANON_KEY);
+    const {data,error}=await client.from('cars').select('*').order('created_at',{ascending:false});
+    if(error)throw error;
+    cars=data||[];
+  }catch(error){
+    console.error('Gagal mengambil katalog Supabase:',error);
+    cars=[];
+  }
+  renderBrands();renderCars();
 }
 document.getElementById('clearFilter').addEventListener('click',()=>setBrand('Semua'));
 document.getElementById('modalClose').addEventListener('click',()=>{document.getElementById('detailModal').classList.add('hidden');document.body.style.overflow='';});
 document.getElementById('detailModal').addEventListener('click',e=>{if(e.target.id==='detailModal')document.getElementById('modalClose').click();});
-document.getElementById('prevPhoto').addEventListener('click',()=>{if(activeCar&&activeCar.photos.length){photoIndex=(photoIndex-1+activeCar.photos.length)%activeCar.photos.length;updateModal();}});
-document.getElementById('nextPhoto').addEventListener('click',()=>{if(activeCar&&activeCar.photos.length){photoIndex=(photoIndex+1)%activeCar.photos.length;updateModal();}});
+document.getElementById('prevPhoto').addEventListener('click',()=>{if(activeCar){const n=activeCar.photos?.length||1;photoIndex=(photoIndex-1+n)%n;updateModal();}});
+document.getElementById('nextPhoto').addEventListener('click',()=>{if(activeCar){const n=activeCar.photos?.length||1;photoIndex=(photoIndex+1)%n;updateModal();}});
 let touchStart=0;
 document.getElementById('detailImage').addEventListener('touchstart',e=>{touchStart=e.changedTouches[0].clientX;});
 document.getElementById('detailImage').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-touchStart;if(Math.abs(dx)>40)(dx<0?document.getElementById('nextPhoto'):document.getElementById('prevPhoto')).click();});
-renderBrands();
-renderCars();
+loadCars();
