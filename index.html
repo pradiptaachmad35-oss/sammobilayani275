@@ -10,23 +10,17 @@
 <body>
 <header class="topbar">
   <div class="topbar-inner">
-    <a class="brand" href="#beranda" aria-label="SAM MOBIL">
-      <img src="sam-logo.png" alt="SAM MOBIL">
-    </a>
-    <nav>
-      <a class="active" href="#beranda">Beranda</a>
-      <a href="#merek">Tipe Mobil</a>
-    </nav>
+    <a class="brand" href="#beranda" aria-label="SAM MOBIL"><img src="sam-logo.png" alt="SAM MOBIL"></a>
+    <nav><a class="active" href="#beranda">Beranda</a><a href="#merek">Tipe Mobil</a></nav>
     <div class="contact-strip" aria-label="Kontak SAM MOBIL">
       <img src="whatsapp-logo.png" alt="Kontak SAM MOBIL - 031 8418865 - 0817 5015 676 Rifki - 0878 7644 0361 Dipta">
       <a class="hotspot phone-hotspot" href="tel:0318418865" aria-label="Telepon SAM MOBIL"></a>
-      <a class="hotspot rifki-hotspot" href="https://wa.me/628175015676" target="_blank" aria-label="WhatsApp Rifki"></a>
-      <a class="hotspot dipta-hotspot" href="https://wa.me/6287876440361" target="_blank" aria-label="WhatsApp Dipta"></a>
+      <a class="hotspot rifki-hotspot" href="https://wa.me/628175015676" target="_blank" rel="noopener" aria-label="WhatsApp Rifki"></a>
+      <a class="hotspot dipta-hotspot" href="https://wa.me/6287876440361" target="_blank" rel="noopener" aria-label="WhatsApp Dipta"></a>
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
   </div>
 </header>
-
 <main>
 <section class="hero" id="beranda">
   <div class="hero-overlay"></div>
@@ -36,54 +30,25 @@
     <p>Jual beli mobil bekas berkualitas di Jl. A. Yani No. 275 Surabaya.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="#stok">Lihat Stok</a>
-      <a class="btn btn-outline" href="https://wa.me/628175015676?text=Halo%20SAM%20MOBIL%2C%20saya%20ingin%20menanyakan%20stok%20mobil." target="_blank">WhatsApp</a>
+      <a class="btn btn-outline" href="https://wa.me/628175015676?text=Halo%20SAM%20MOBIL%2C%20saya%20ingin%20menanyakan%20stok%20mobil." target="_blank" rel="noopener">WhatsApp</a>
     </div>
   </div>
   <div class="hero-dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
 </section>
-
 <section class="section brands" id="merek">
-  <div class="section-head">
-    <div><div class="section-kicker">PILIH TIPE MOBIL</div><h2>Tipe Mobil</h2></div>
-    <button class="text-btn" id="clearFilter">Lihat Semua →</button>
-  </div>
+  <div class="section-head"><div><div class="section-kicker">PILIH TIPE MOBIL</div><h2>Tipe Mobil</h2></div><button class="text-btn" id="clearFilter">Lihat Semua →</button></div>
   <div class="brand-grid" id="brandGrid"></div>
 </section>
-
 <section class="section inventory" id="stok">
-  <div class="section-head">
-    <div><div class="section-kicker">KOLEKSI KAMI</div><h2>Stok Mobil Tersedia</h2></div>
-  </div>
+  <div class="section-head"><div><div class="section-kicker">KOLEKSI KAMI</div><h2>Stok Mobil Tersedia</h2></div></div>
   <div class="catalog" id="catalog"></div>
-  <div class="empty hidden" id="emptyState">
-    <div class="empty-icon">🚘</div>
-    <h3>Stok belum tersedia</h3>
-    <p>Belum ada unit untuk merek ini.</p>
-  </div>
+  <div class="empty hidden" id="emptyState"><div class="empty-icon">🚘</div><h3>Stok belum tersedia</h3><p>Belum ada unit untuk merek ini.</p></div>
 </section>
 </main>
-
-<footer>
-  <div class="footer-inner">
-    <img src="sam-logo.png" alt="SAM MOBIL">
-    <div><strong>SAM MOBIL — AYANI 275</strong><br>Jl. A. Yani No. 275 Surabaya</div>
-    <div class="footer-contact"><a href="tel:0318418865">031 8418865</a><a href="https://wa.me/628175015676">Rifki</a><a href="https://wa.me/6287876440361">Dipta</a></div>
-  </div>
-</footer>
-
-<div class="modal hidden" id="detailModal">
-  <div class="modal-card">
-    <button class="modal-close" id="modalClose">×</button>
-    <div class="detail-gallery">
-      <img id="detailImage" src="" alt="Foto mobil">
-      <button class="gallery-prev" id="prevPhoto">‹</button>
-      <button class="gallery-next" id="nextPhoto">›</button>
-      <div class="dots" id="photoDots"></div>
-    </div>
-    <div class="detail-body" id="detailBody"></div>
-  </div>
-</div>
+<footer><div class="footer-inner"><img src="sam-logo.png" alt="SAM MOBIL"><div><strong>SAM MOBIL — AYANI 275</strong><br>Jl. A. Yani No. 275 Surabaya</div><div class="footer-contact"><a href="tel:0318418865">031 8418865</a><a href="https://wa.me/628175015676" target="_blank" rel="noopener">Rifki</a><a href="https://wa.me/6287876440361" target="_blank" rel="noopener">Dipta</a></div></div></footer>
+<div class="modal hidden" id="detailModal"><div class="modal-card"><button class="modal-close" id="modalClose">×</button><div class="detail-gallery"><img id="detailImage" src="" alt="Foto mobil"><button class="gallery-prev" id="prevPhoto">‹</button><button class="gallery-next" id="nextPhoto">›</button><div class="dots" id="photoDots"></div></div><div class="detail-body" id="detailBody"></div></div></div>
 <script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="app.js"></script>
 </body>
 </html>
