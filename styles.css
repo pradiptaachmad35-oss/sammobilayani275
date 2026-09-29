@@ -731,3 +731,67 @@ footer:after{
   background:
     linear-gradient(90deg,rgba(2,11,25,.92) 0%,rgba(2,11,25,.34) 18%,rgba(2,11,25,0) 34%,rgba(2,11,25,0) 66%,rgba(2,11,25,.34) 82%,rgba(2,11,25,.92) 100%);
 }
+
+/* POPUP: foto dan keterangan punya scroll vertikal masing-masing */
+.modal-card{
+  height:min(90vh,760px)!important;
+  max-height:90vh!important;
+  overflow:hidden!important;
+}
+.detail-gallery{
+  height:100%!important;
+  min-height:0!important;
+  max-height:100%!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  align-items:flex-start!important;
+  justify-items:center!important;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(92,145,220,.65) rgba(8,25,48,.55);
+}
+.detail-gallery img{
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  display:block!important;
+  flex:none!important;
+}
+.detail-body{
+  height:100%!important;
+  min-height:0!important;
+  max-height:100%!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  scrollbar-width:thin;
+  scrollbar-color:#b6c4d6 #edf2f7;
+}
+@media(max-width:900px){
+  .modal-card{
+    height:92vh!important;
+    max-height:92vh!important;
+  }
+  .detail-gallery{
+    height:380px!important;
+    max-height:380px!important;
+  }
+  .detail-gallery img{
+    height:auto!important;
+    min-height:0!important;
+  }
+  .detail-body{
+    height:calc(92vh - 380px)!important;
+    max-height:calc(92vh - 380px)!important;
+  }
+}
+@media(max-width:760px){
+  .detail-gallery{
+    height:300px!important;
+    max-height:300px!important;
+  }
+  .detail-body{
+    height:calc(92vh - 300px)!important;
+    max-height:calc(92vh - 300px)!important;
+  }
+}
