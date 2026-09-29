@@ -10,6 +10,9 @@ const drawer=document.getElementById('drawer');
 const photoInput=document.getElementById('photoInput');
 const dropZone=document.getElementById('dropZone');
 const photoPreview=document.getElementById('photoPreview');
+const brandSelect=document.getElementById('brand');
+const customBrandWrap=document.getElementById('customBrandWrap');
+const customBrandInput=document.getElementById('customBrand');
 
 const showError=(msg)=>{loginError.textContent=msg||'';};
 
@@ -50,6 +53,30 @@ function escapeHtml(value){
   return String(value??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
 }
 
+function updateBrandInput(){
+  const custom=brandSelect.value==='Lainnya';
+  customBrandWrap.classList.toggle('hidden',!custom);
+  customBrandInput.required=custom;
+  if(!custom)customBrandInput.value='';
+}
+
+brandSelect.addEventListener('change',updateBrandInput);
+
+function setBrandForEdit(value){
+  const standard=['Toyota','Mitsubishi','Honda','Daihatsu','Isuzu','Suzuki'];
+  if(standard.some(b=>b.toLowerCase()===String(value||'').trim().toLowerCase())){
+    brandSelect.value=standard.find(b=>b.toLowerCase()===String(value||'').trim().toLowerCase());
+    customBrandInput.value='';
+  }else if(value){
+    brandSelect.value='Lainnya';
+    customBrandInput.value=value;
+  }else{
+    brandSelect.value='';
+    customBrandInput.value='';
+  }
+  updateBrandInput();
+}
+
 function clearPicked(){
   pickedPhotos.forEach(p=>{if(p.file&&p.preview)URL.revokeObjectURL(p.preview);});
   pickedPhotos=[];
@@ -60,10 +87,11 @@ function openDrawer(car){
   drawer.classList.remove('hidden');
   carForm.reset();
   clearPicked();
+  setBrandForEdit(car?.brand||'');
   document.getElementById('carId').value=car?.id||'';
   document.getElementById('formTitle').textContent=car?'Edit Mobil':'Tambah Mobil';
   if(car){
-    ['brand','name','model','year','km','price','status','transmission','color','description'].forEach(k=>document.getElementById(k).value=car[k]??'');
+    ['name','model','year','km','price','status','transmission','color','description'].forEach(k=>document.getElementById(k).value=car[k]??'');
     (car.photos||[]).slice(0,10).forEach(url=>pickedPhotos.push({url,existing:true}));
     renderPhotoPreview();
   }
@@ -170,9 +198,15 @@ carForm.onsubmit=async e=>{
   saveButton.textContent='Menyimpan...';
   try{
     const id=document.getElementById('carId').value||crypto.randomUUID();
+    const selectedBrand=brandSelect.value;
+    const finalBrand=selectedBrand==='Lainnya'?customBrandInput.value.trim():selectedBrand;
+    if(!finalBrand){
+      alert('Silakan pilih atau isi merek mobil.');
+      return;
+    }
     const payload={
       id,
-      brand:document.getElementById('brand').value.trim(),
+      brand:finalBrand,
       name:document.getElementById('name').value.trim(),
       model:document.getElementById('model').value.trim(),
       year:Number(document.getElementById('year').value)||null,
