@@ -162,3 +162,44 @@ footer{
   .section h2{font-size:25px}
   footer{padding:35px 16px 25px}
 }
+
+/* refined status popup footer */
+.status{display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border-radius:999px;background:rgba(20,137,232,.94);border:1px solid rgba(255,255,255,.35);box-shadow:0 7px 20px rgba(0,92,190,.24);font-size:10px;letter-spacing:.2px}
+.status i{width:6px;height:6px;border-radius:50%;display:block;background:#b9ffd8;box-shadow:0 0 8px rgba(185,255,216,.9)}
+.status.sold{background:rgba(225,53,65,.94);box-shadow:0 7px 20px rgba(190,25,38,.20)}
+.status.sold i{background:#fff;box-shadow:none}
+.detail-status{position:static!important;margin-bottom:9px;color:#fff;font-size:10px}
+.modal{background:rgba(1,8,18,.82);backdrop-filter:blur(7px);padding:28px}
+.modal-card{width:min(1120px,100%);max-height:90vh;border-radius:22px;overflow:hidden;border:1px solid rgba(111,167,255,.18);box-shadow:0 35px 100px rgba(0,0,0,.55),0 0 50px rgba(32,116,255,.10);grid-template-columns:1.08fr .92fr}
+.detail-gallery{min-height:590px;background:#07172d}
+.detail-gallery:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(5,20,39,.12),transparent 25%,transparent 75%,rgba(3,14,29,.18))}
+.detail-gallery img{min-height:590px}
+.modal-close{right:16px;top:16px;width:38px;height:38px;background:rgba(255,255,255,.92);box-shadow:0 6px 18px rgba(0,0,0,.15);font-weight:700}
+.detail-body{padding:38px 34px 32px;background:linear-gradient(180deg,#fff 0%,#f9fbfd 100%)}
+.detail-body h2{font-size:31px;line-height:1.06;letter-spacing:-.5px;margin:5px 0 4px}
+.detail-price-row{margin:17px 0 22px;padding-bottom:18px;border-bottom:1px solid #e8edf3}
+.detail-price{font-size:28px}
+.detail-specs{padding:0;gap:9px}
+.spec-item{background:#f4f7fa;border:1px solid #e3e9ef;border-radius:12px;padding:12px 13px;min-height:70px}
+.spec-item span{font-size:10px!important;color:#7a8695!important}
+.spec-item strong{font-size:13px}
+.detail-info-box{margin-top:15px;padding:15px 16px;background:linear-gradient(135deg,#edf7ff,#f5f2ff);border:1px solid #dbe9fa;box-shadow:0 7px 20px rgba(30,100,180,.06)}
+.wa-btn{border-radius:11px;background:linear-gradient(135deg,#16b86a,#0b9f58);box-shadow:0 8px 20px rgba(22,184,106,.18);padding:14px}
+.gallery-prev,.gallery-next{width:44px;height:44px;box-shadow:0 8px 20px rgba(0,0,0,.16);z-index:2}
+.dots{z-index:3}
+footer{background-position:center;padding:48px 28px 20px}
+.footer-inner{display:grid;grid-template-columns:1.25fr 1fr 1.1fr;align-items:start;gap:40px;max-width:1240px}
+.footer-brand{display:flex;align-items:center;gap:16px}
+.footer-brand img{width:230px;height:64px}
+.footer-brand strong{display:block;font-size:15px;letter-spacing:.2px}
+.footer-brand span,.footer-address span:not(.footer-label){display:block;margin-top:5px;color:#b9c7d8;font-size:11px}
+.footer-label{display:block;margin-bottom:10px;color:#55b8ff;font-size:9px;font-weight:900;letter-spacing:1.7px}
+.footer-address strong{font-size:14px;display:block}
+.footer-contact{margin-left:0;display:flex;flex-wrap:wrap;gap:8px}
+.footer-contact .footer-label{width:100%}
+.footer-contact a{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;color:#fff;background:rgba(5,27,53,.72);border:1px solid rgba(96,165,250,.18);border-radius:10px;font-size:11px;transition:.2s}
+.footer-contact a:hover{transform:translateY(-2px);background:rgba(21,70,125,.72);border-color:rgba(96,165,250,.4)}
+.footer-contact b{color:#62bdff;font-size:9px}
+.footer-bottom{max-width:1240px;margin:32px auto 0;padding-top:16px;border-top:1px solid rgba(151,190,240,.15);display:flex;justify-content:space-between;color:#8fa4bb;font-size:9px;letter-spacing:.3px}
+@media(max-width:900px){.modal-card{grid-template-columns:1fr;max-height:92vh}.detail-gallery,.detail-gallery img{min-height:380px;height:380px}.footer-inner{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}}
+@media(max-width:760px){.modal{padding:10px}.modal-card{border-radius:17px}.detail-gallery,.detail-gallery img{min-height:280px;height:280px}.detail-body{padding:25px 18px 20px}.detail-body h2{font-size:25px}.detail-price{font-size:24px}.footer-inner{grid-template-columns:1fr;gap:24px}.footer-brand{grid-column:auto;align-items:flex-start}.footer-brand img{width:190px;height:55px}.footer-bottom{flex-direction:column;gap:7px}}
