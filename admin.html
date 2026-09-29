@@ -5,7 +5,21 @@
 <section id="loginView" class="login"><div class="logo"><img src="sam-logo.png" alt="SAM MOBIL"></div><h1>Admin SAM MOBIL</h1><p>Kelola katalog dan stok kendaraan.</p><form id="loginForm"><input id="username" type="text" placeholder="Username" autocomplete="username" required><input id="password" type="password" placeholder="Password" autocomplete="current-password" required><button>Masuk</button><div id="loginError"></div></form></section>
 <section id="adminView" class="hidden"><header class="head"><div><div class="logo"><img src="sam-logo.png" alt="SAM MOBIL"></div><h1>Kelola Stok</h1></div><div><button id="addBtn">+ Tambah Mobil</button><button id="logoutBtn" class="light">Keluar</button></div></header><div class="panel"><table><thead><tr><th>Mobil</th><th>Tahun</th><th>Harga</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="adminRows"></tbody></table></div></section>
 </main>
-<div id="drawer" class="drawer hidden"><div class="drawer-card"><button id="drawerClose" class="x">×</button><h2 id="formTitle">Tambah Mobil</h2><form id="carForm"><input id="carId" type="hidden"><label>Merek<input id="brand" required></label><label>Nama<input id="name" required></label><label>Model<input id="model"></label><div class="two"><label>Tahun<input id="year" type="number"></label><label>Kilometer<input id="km"></label></div><div class="two"><label>Harga<input id="price" type="number"></label><label>Status<select id="status"><option>Tersedia</option><option>Stok Habis</option></select></label></div><div class="two"><label>Transmisi<input id="transmission"></label><label>Warna<input id="color"></label></div>
+<div id="drawer" class="drawer hidden"><div class="drawer-card"><button id="drawerClose" class="x">×</button><h2 id="formTitle">Tambah Mobil</h2><form id="carForm"><input id="carId" type="hidden">
+<label>Merek
+<select id="brand" required>
+<option value="">Pilih Merek</option>
+<option value="Toyota">Toyota</option>
+<option value="Mitsubishi">Mitsubishi</option>
+<option value="Honda">Honda</option>
+<option value="Daihatsu">Daihatsu</option>
+<option value="Isuzu">Isuzu</option>
+<option value="Suzuki">Suzuki</option>
+<option value="Lainnya">Lainnya</option>
+</select>
+</label>
+<label id="customBrandWrap" class="hidden">Merek Lainnya<input id="customBrand" placeholder="Contoh: Mazda, Nissan, BMW"></label>
+<label>Nama<input id="name" required></label><label>Model<input id="model"></label><div class="two"><label>Tahun<input id="year" type="number"></label><label>Kilometer<input id="km"></label></div><div class="two"><label>Harga<input id="price" type="number"></label><label>Status<select id="status"><option>Tersedia</option><option>Stok Habis</option></select></label></div><div class="two"><label>Transmisi<input id="transmission"></label><label>Warna<input id="color"></label></div>
 <div class="photo-upload"><label class="photo-label">Foto Mobil</label><div id="dropZone" class="drop-zone"><input id="photoInput" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden><div class="drop-icon">📷</div><strong>Drag & Drop foto di sini</strong><span>atau</span><button type="button" id="choosePhotos" class="choose-btn">Pilih dari perangkat</button><small>Maksimal 10 foto • JPG, PNG, WebP</small></div><div id="photoPreview" class="photo-preview"></div></div>
 <label>Deskripsi<textarea id="description" rows="4"></textarea></label><button class="save">Simpan Mobil</button></form></div></div>
 <script src="config.js?v=3"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="admin.js?v=3"></script>
