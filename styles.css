@@ -701,3 +701,11 @@ footer:after{
   background-repeat:no-repeat!important;
   background-position:center!important;
 }
+
+/* Latar & SAM Store: isi seluruh bidang hero, rata kiri-kanan dan atas-bawah */
+.hero-slide:nth-child(1),
+.hero-slide:nth-child(2){
+  background-size:100% 100%!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+}
