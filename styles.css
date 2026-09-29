@@ -590,3 +590,69 @@ footer:after{
 .footer-contact-row a:has(.wa-logo):hover{
   box-shadow:0 0 18px rgba(37,211,102,.22)!important;
 }
+
+/* Hero slideshow using uploaded deal/latar images */
+.hero{
+  background-image:none!important;
+  position:relative;
+  isolation:isolate;
+}
+.hero-slides{
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  overflow:hidden;
+}
+.hero-slide{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transform:scale(1.035);
+  transition:opacity 1s ease,transform 6s ease;
+}
+.hero-slide.active{
+  opacity:1;
+  transform:scale(1);
+}
+.hero-slides:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(2,13,29,.22);
+}
+.hero-overlay{
+  z-index:-1!important;
+}
+.hero-dots .dot{
+  cursor:pointer;
+  transition:.2s ease;
+}
+.hero-dots .dot.active{
+  width:22px;
+  border-radius:999px;
+  box-shadow:0 0 10px rgba(255,255,255,.65);
+}
+/* Use the actual uploaded WhatsApp logo image everywhere */
+.header-contact .wa-mark,
+.wa-logo,
+.hero-wa-icon{
+  background-image:url("WhatsApp.png.webp")!important;
+  background-size:contain!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+  background-color:transparent!important;
+  color:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+.header-contact .wa-mark{
+  width:27px!important;height:27px!important;
+}
+.wa-logo{
+  width:22px!important;height:22px!important;
+}
+.hero-wa-icon{
+  width:22px!important;height:22px!important;
+}
