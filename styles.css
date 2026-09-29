@@ -203,3 +203,38 @@ footer{background-position:center;padding:48px 28px 20px}
 .footer-bottom{max-width:1240px;margin:32px auto 0;padding-top:16px;border-top:1px solid rgba(151,190,240,.15);display:flex;justify-content:space-between;color:#8fa4bb;font-size:9px;letter-spacing:.3px}
 @media(max-width:900px){.modal-card{grid-template-columns:1fr;max-height:92vh}.detail-gallery,.detail-gallery img{min-height:380px;height:380px}.footer-inner{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}}
 @media(max-width:760px){.modal{padding:10px}.modal-card{border-radius:17px}.detail-gallery,.detail-gallery img{min-height:280px;height:280px}.detail-body{padding:25px 18px 20px}.detail-body h2{font-size:25px}.detail-price{font-size:24px}.footer-inner{grid-template-columns:1fr;gap:24px}.footer-brand{grid-column:auto;align-items:flex-start}.footer-brand img{width:190px;height:55px}.footer-bottom{flex-direction:column;gap:7px}}
+
+/* starry showroom background */
+body:after{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:-1;
+  opacity:.65;
+  background-image:
+    radial-gradient(circle at 8% 14%,rgba(255,255,255,.9) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 17% 38%,rgba(255,255,255,.7) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 29% 9%,rgba(255,255,255,.55) 0 .8px,transparent 1.5px),
+    radial-gradient(circle at 38% 27%,rgba(255,255,255,.8) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 49% 13%,rgba(255,255,255,.5) 0 .8px,transparent 1.5px),
+    radial-gradient(circle at 61% 35%,rgba(255,255,255,.85) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 73% 16%,rgba(255,255,255,.65) 0 .8px,transparent 1.6px),
+    radial-gradient(circle at 84% 43%,rgba(255,255,255,.8) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 94% 21%,rgba(255,255,255,.55) 0 .8px,transparent 1.5px),
+    radial-gradient(circle at 12% 70%,rgba(255,255,255,.6) 0 .8px,transparent 1.6px),
+    radial-gradient(circle at 31% 82%,rgba(255,255,255,.8) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 47% 66%,rgba(255,255,255,.5) 0 .8px,transparent 1.5px),
+    radial-gradient(circle at 66% 88%,rgba(255,255,255,.7) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 79% 68%,rgba(255,255,255,.55) 0 .8px,transparent 1.5px),
+    radial-gradient(circle at 91% 84%,rgba(255,255,255,.75) 0 1px,transparent 1.7px);
+}
+.wa-logo{
+  width:20px;height:20px;display:inline-grid;place-items:center;
+  color:#25d366;flex:0 0 20px;
+}
+.wa-logo svg{width:20px;height:20px;display:block}
+.footer-contact a:has(.wa-logo){
+  border-color:rgba(37,211,102,.22);
+}
+.footer-contact a:has(.wa-logo):hover{
+  background:rgba(15,78,59,.72);
+  border-color:rgba(37,211,102,.42);
+}
