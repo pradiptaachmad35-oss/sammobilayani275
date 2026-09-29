@@ -238,3 +238,53 @@ body:after{
   background:rgba(15,78,59,.72);
   border-color:rgba(37,211,102,.42);
 }
+
+/* colorful vehicle specification cards */
+.detail-specs .spec-item{
+  position:relative;
+  overflow:hidden;
+  border:1px solid transparent;
+  box-shadow:0 5px 16px rgba(16,24,40,.04);
+}
+.detail-specs .spec-item:before{
+  content:"";
+  position:absolute;
+  left:0;top:0;bottom:0;width:3px;
+  border-radius:12px 0 0 12px;
+}
+.detail-specs .spec-item:nth-child(1){
+  background:linear-gradient(135deg,#eef7ff,#f7fbff);
+  border-color:#d8ebff;
+}
+.detail-specs .spec-item:nth-child(1):before{background:#2684ff}
+.detail-specs .spec-item:nth-child(2){
+  background:linear-gradient(135deg,#f0fbf6,#f8fffb);
+  border-color:#d7f1e4;
+}
+.detail-specs .spec-item:nth-child(2):before{background:#16b86a}
+.detail-specs .spec-item:nth-child(3){
+  background:linear-gradient(135deg,#f5f1ff,#fbf9ff);
+  border-color:#e5dcff;
+}
+.detail-specs .spec-item:nth-child(3):before{background:#7957e8}
+.detail-specs .spec-item:nth-child(4){
+  background:linear-gradient(135deg,#fff8ed,#fffdf8);
+  border-color:#f8e5bd;
+}
+.detail-specs .spec-item:nth-child(4):before{background:#f59e0b}
+.detail-specs .spec-item:nth-child(5){
+  background:linear-gradient(135deg,#fff1f2,#fff9f9);
+  border-color:#f8d8dc;
+}
+.detail-specs .spec-item:nth-child(5):before{background:#ef4444}
+.detail-specs .spec-item:nth-child(6){
+  background:linear-gradient(135deg,#edfaff,#f8fdff);
+  border-color:#d5eef7;
+}
+.detail-specs .spec-item:nth-child(6):before{background:#0891b2}
+.detail-specs .spec-item span{
+  font-weight:800!important;
+}
+.detail-specs .spec-item strong{
+  color:#172033;
+}
