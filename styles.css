@@ -709,3 +709,25 @@ footer:after{
   background-position:center!important;
   background-repeat:no-repeat!important;
 }
+
+/* HERO: foto tetap proporsional, tidak penyet; sisi diisi gradasi */
+.hero-slide:nth-child(1),
+.hero-slide:nth-child(2){
+  background-size:contain!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+  background-color:#061a32;
+}
+.hero-slide:nth-child(1)::before,
+.hero-slide:nth-child(2)::before{
+  background-size:cover!important;
+  background-position:center!important;
+  filter:blur(24px);
+  opacity:.48;
+  transform:scale(1.08);
+}
+.hero-slide:nth-child(1)::after,
+.hero-slide:nth-child(2)::after{
+  background:
+    linear-gradient(90deg,rgba(2,11,25,.92) 0%,rgba(2,11,25,.34) 18%,rgba(2,11,25,0) 34%,rgba(2,11,25,0) 66%,rgba(2,11,25,.34) 82%,rgba(2,11,25,.92) 100%);
+}
