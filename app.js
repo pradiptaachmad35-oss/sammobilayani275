@@ -2,6 +2,7 @@ const brands=['Toyota','Mitsubishi','Honda','Daihatsu','Isuzu','Suzuki','Lainnya
 const brandLogos={Toyota:'toyota.png',Mitsubishi:'Mitsubishi.png',Honda:'honda.png',Daihatsu:'Daihatsu.png',Isuzu:'Isuzu.png',Suzuki:'suzuku.png'};
 let cars=[],activeBrand='Semua',activeCar=null,photoIndex=0;
 const rupiah=n=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(Number(n||0));
+const normalizeBrand=v=>String(v??'').trim().toLowerCase();
 const brandGrid=document.getElementById('brandGrid'),catalog=document.getElementById('catalog'),empty=document.getElementById('emptyState');
 
 function renderBrands(){
@@ -12,7 +13,7 @@ function renderBrands(){
   document.querySelectorAll('.brand-chip').forEach(btn=>btn.addEventListener('click',()=>setBrand(btn.dataset.brand)));
 }
 function renderCars(){
-  const list=activeBrand==='Semua'?cars:cars.filter(c=>c.brand===activeBrand);
+  const list=activeBrand==='Semua'?cars:cars.filter(c=>normalizeBrand(c.brand)===normalizeBrand(activeBrand));
   catalog.innerHTML=list.map(c=>{
     const photo=(c.photos&&c.photos[0])||'sam-storefront.jpeg';
     const sold=c.status!=='Tersedia';
@@ -29,7 +30,7 @@ function updateModal(){
   document.getElementById('detailImage').src=photos[photoIndex];
   document.getElementById('photoDots').textContent=photos.length>1?(photoIndex+1)+' / '+photos.length:'';
   const sold=activeCar.status!=='Tersedia';
-  document.getElementById('detailBody').innerHTML='<span class="status '+(sold?'sold':'')+'">'+activeCar.status+'</span><h2>'+activeCar.name+'</h2><div>'+(activeCar.model||'')+'</div><div class="detail-price">'+rupiah(activeCar.price)+'</div><div class="detail-specs"><div><span>Tahun</span><strong>'+ (activeCar.year||'—') +'</strong></div><div><span>Kilometer</span><strong>'+ (activeCar.km||'—') +'</strong></div><div><span>Transmisi</span><strong>'+ (activeCar.transmission||'—') +'</strong></div><div><span>Warna</span><strong>'+ (activeCar.color||'—') +'</strong></div><div><span>Kondisi</span><strong>'+ (activeCar.condition||'Bekas') +'</strong></div><div><span>Lokasi</span><strong>Surabaya</strong></div></div><p class="detail-desc">'+(activeCar.description||'Hubungi SAM MOBIL untuk informasi unit, kondisi, kelengkapan surat, dan jadwal melihat kendaraan.')+'</p>'+(sold?'':'<a class="wa-btn" href="https://wa.me/'+window.SAM_CONFIG.WHATSAPP_DEFAULT+'?text='+encodeURIComponent('Halo, saya tertarik dengan '+activeCar.name+' '+(activeCar.model||'')+' tahun '+activeCar.year+'. Apakah unit tersebut masih tersedia?')+'" target="_blank" rel="noopener">WhatsApp — Tanyakan Unit</a>');
+  document.getElementById('detailBody').innerHTML='<span class="status '+(sold?'sold':'')+'">'+activeCar.status+'</span><h2>'+activeCar.name+'</h2><div>'+(activeCar.model||'')+'</div><div class="detail-price">'+rupiah(activeCar.price)+'</div><div class="detail-specs"><div><span>Tahun</span><strong>'+ (activeCar.year||'—') +'</strong></div><div><span>Kilometer</span><strong>'+ (activeCar.km||'—') +'</strong></div><div><span>Transmisi</span><strong>'+ (activeCar.transmission||'—') +'</strong></div><div><span>Warna</span><strong>'+ (activeCar.color||'—') +'</strong></div><div><span>Kondisi</span><strong>'+(activeCar.condition||'Bekas')+'</strong></div><div><span>Lokasi</span><strong>Surabaya</strong></div></div><p class="detail-desc">'+(activeCar.description||'Hubungi SAM MOBIL untuk informasi unit, kondisi, kelengkapan surat, dan jadwal melihat kendaraan.')+'</p>'+(sold?'':'<a class="wa-btn" href="https://wa.me/'+window.SAM_CONFIG.WHATSAPP_DEFAULT+'?text='+encodeURIComponent('Halo, saya tertarik dengan '+activeCar.name+' '+(activeCar.model||'')+' tahun '+activeCar.year+'. Apakah unit tersebut masih tersedia?')+'" target="_blank" rel="noopener">WhatsApp — Tanyakan Unit</a>');
   document.getElementById('prevPhoto').style.display=photos.length>1?'':'none';
   document.getElementById('nextPhoto').style.display=photos.length>1?'':'none';
 }
