@@ -467,3 +467,22 @@ body:after{
 @media(max-width:760px){
   .header-contacts{display:none}
 }
+
+/* Hero WhatsApp interactive */
+.hero-wa-btn{
+  display:inline-flex!important;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  transition:.22s ease!important;
+}
+.hero-wa-icon{width:20px;height:20px;display:inline-grid;place-items:center;color:#25d366}
+.hero-wa-icon svg{width:20px;height:20px;display:block}
+.hero-wa-btn:hover{
+  color:#fff!important;
+  border-color:#25d366!important;
+  background:rgba(12,74,48,.72)!important;
+  box-shadow:0 0 24px rgba(37,211,102,.32),inset 0 0 14px rgba(37,211,102,.12)!important;
+  transform:translateY(-2px);
+}
+.hero-wa-btn:hover .hero-wa-icon{filter:drop-shadow(0 0 6px rgba(37,211,102,.7))}
