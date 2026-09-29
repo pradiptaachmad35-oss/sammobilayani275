@@ -368,3 +368,17 @@ body:after{
 @media(max-width:760px){
   .footer-contact{flex-wrap:wrap}
 }
+
+/* header premium hover navigation */
+.topbar nav a{position:relative;overflow:hidden;transition:.22s ease;color:#dce7f5}
+.topbar nav a:before{content:"";position:absolute;inset:3px;border-radius:999px;background:linear-gradient(135deg,rgba(31,144,255,.95),rgba(91,70,245,.95));opacity:0;transform:scale(.82);transition:.22s ease;z-index:-1}
+.topbar nav a:hover{color:#fff;text-shadow:0 0 12px rgba(255,255,255,.45);box-shadow:0 0 24px rgba(54,119,255,.32)}
+.topbar nav a:hover:before{opacity:1;transform:scale(1)}
+.topbar nav a.active{color:#fff}
+.detail-specs{grid-template-columns:repeat(2,minmax(0,1fr))}
+.detail-specs .spec-item{min-width:0}
+.footer-contact{flex-direction:row!important;align-items:center;flex-wrap:nowrap!important;gap:8px!important}
+.footer-contact .footer-label{flex:0 0 auto;width:auto!important;margin:0 4px 0 0}
+.footer-contact a{white-space:nowrap}
+@media(max-width:1050px){.footer-inner{grid-template-columns:1fr 1fr}.footer-contact{flex-wrap:wrap!important}.footer-contact .footer-label{width:100%!important}}
+@media(max-width:760px){.detail-specs{grid-template-columns:1fr 1fr}.footer-contact{flex-wrap:wrap!important}.footer-contact .footer-label{width:100%!important}}
