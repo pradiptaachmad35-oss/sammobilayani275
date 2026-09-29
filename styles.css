@@ -818,3 +818,61 @@ footer:after{
   z-index:11!important;
   white-space:nowrap;
 }
+
+/* FIX POPUP GALLERY: image scrolls, controls stay centered in visible panel */
+.detail-gallery{
+  position:relative!important;
+  display:block!important;
+  overflow:hidden!important;
+  min-height:0!important;
+  height:100%!important;
+  max-height:100%!important;
+}
+.gallery-scroll{
+  position:absolute!important;
+  inset:0!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(92,145,220,.65) rgba(8,25,48,.55);
+}
+.gallery-scroll img{
+  position:relative!important;
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  object-fit:contain!important;
+}
+.gallery-prev,.gallery-next{
+  position:absolute!important;
+  top:50%!important;
+  transform:translateY(-50%)!important;
+  z-index:20!important;
+}
+.gallery-prev{left:15px!important}
+.gallery-next{right:15px!important}
+.dots{
+  position:absolute!important;
+  left:50%!important;
+  top:auto!important;
+  bottom:16px!important;
+  transform:translateX(-50%)!important;
+  z-index:21!important;
+}
+@media(max-width:900px){
+  .detail-gallery{
+    height:380px!important;
+    max-height:380px!important;
+  }
+  .gallery-scroll{
+    height:100%!important;
+  }
+}
+@media(max-width:760px){
+  .detail-gallery{
+    height:300px!important;
+    max-height:300px!important;
+  }
+}
