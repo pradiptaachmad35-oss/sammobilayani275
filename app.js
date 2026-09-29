@@ -71,22 +71,3 @@ if(heroSlides.length>1){
   heroDots.forEach((dot,i)=>dot.addEventListener('click',()=>showHeroSlide(i)));
 }
 
-/* Keep gallery arrows and photo counter attached to the photo while scrolling */
-const galleryEl=document.querySelector('.detail-gallery');
-const detailImg=document.getElementById('detailImage');
-const galleryPrev=document.getElementById('prevPhoto');
-const galleryNext=document.getElementById('nextPhoto');
-const galleryDots=document.getElementById('photoDots');
-
-function positionGalleryControls(){
-  if(!galleryEl||!detailImg)return;
-  const imgTop=detailImg.offsetTop-galleryEl.scrollTop;
-  const imgHeight=detailImg.offsetHeight;
-  if(!imgHeight)return;
-  const centerTop=imgTop+(imgHeight/2);
-  if(galleryPrev)galleryPrev.style.top=Math.max(10,centerTop-22)+'px';
-  if(galleryNext)galleryNext.style.top=Math.max(10,centerTop-22)+'px';
-  if(galleryDots)galleryDots.style.top=Math.max(10,imgTop+imgHeight-42)+'px';
-}
-galleryEl?.addEventListener('scroll',positionGalleryControls,{passive:true});
-detailImg?.addEventListener('load',()=>requestAnimationFrame(positionGalleryControls));
