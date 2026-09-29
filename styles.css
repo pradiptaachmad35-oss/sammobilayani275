@@ -537,3 +537,56 @@ body:after{
   .footer-contact-row{flex-wrap:wrap}
   .footer-brand strong{white-space:normal}
 }
+
+/* FINAL: neon blue separator between catalog and footer */
+footer{
+  margin-top:42px!important;
+  border-top:0!important;
+  position:relative!important;
+}
+footer:before{
+  content:"";
+  position:absolute;
+  top:-2px;
+  left:0;
+  right:0;
+  height:4px;
+  background:linear-gradient(90deg,
+    rgba(0,170,255,0),
+    #16bfff 18%,
+    #4d8dff 38%,
+    #8a63ff 50%,
+    #4d8dff 62%,
+    #16bfff 82%,
+    rgba(0,170,255,0)
+  );
+  box-shadow:
+    0 0 5px #16bfff,
+    0 0 14px rgba(22,191,255,.85),
+    0 0 30px rgba(72,102,255,.55);
+  z-index:5;
+}
+footer:after{
+  content:"";
+  position:absolute;
+  top:2px;
+  left:0;
+  right:0;
+  height:34px;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(20,163,255,.16),transparent);
+  z-index:0;
+}
+/* Keep the supplied-style WhatsApp badge prominent */
+.header-contact.wa .wa-mark{
+  border-radius:50%!important;
+  background-color:transparent!important;
+  box-shadow:0 0 10px rgba(37,211,102,.14);
+}
+.footer-contact-row a:has(.wa-logo){
+  border-color:rgba(37,211,102,.38)!important;
+  background:rgba(4,39,31,.72)!important;
+}
+.footer-contact-row a:has(.wa-logo):hover{
+  box-shadow:0 0 18px rgba(37,211,102,.22)!important;
+}
