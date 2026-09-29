@@ -91,7 +91,7 @@ function openDrawer(car){
   document.getElementById('carId').value=car?.id||'';
   document.getElementById('formTitle').textContent=car?'Edit Mobil':'Tambah Mobil';
   if(car){
-    ['name','model','year','km','price','status','transmission','color','description'].forEach(k=>document.getElementById(k).value=car[k]??'');
+    ['name','model','year','km','price','status','transmission','fuel','color','condition','description'].forEach(k=>document.getElementById(k).value=car[k]??'');
     (car.photos||[]).slice(0,10).forEach(url=>pickedPhotos.push({url,existing:true}));
     renderPhotoPreview();
   }
@@ -213,9 +213,10 @@ carForm.onsubmit=async e=>{
       km:document.getElementById('km').value.trim(),
       price:Number(document.getElementById('price').value)||0,
       status:document.getElementById('status').value,
-      transmission:document.getElementById('transmission').value.trim(),
+      transmission:document.getElementById('transmission').value,
+      fuel:document.getElementById('fuel').value,
       color:document.getElementById('color').value.trim(),
-      condition:'Bekas',
+      condition:document.getElementById('condition').value,
       description:document.getElementById('description').value.trim()
     };
     payload.photos=await uploadPhotos(id);
