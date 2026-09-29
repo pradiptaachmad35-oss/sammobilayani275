@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin — SAM MOBIL</title><link rel="stylesheet" href="admin.css"><style>
 .storage-usage{margin-top:18px;background:#fff;border:1px solid #eaecf0;border-radius:15px;padding:18px 20px;box-shadow:0 3px 12px #10182808}.storage-usage>div:first-child{display:flex;justify-content:space-between;align-items:center;gap:12px}.storage-usage strong{font-size:15px}.storage-usage #storagePercent{font-size:12px;font-weight:800;color:#667085}.storage-bar{height:9px;background:#eaecf0;border-radius:999px;overflow:hidden;margin:13px 0 10px}.storage-bar span{display:block;height:100%;width:0;background:#0869bd;border-radius:999px;transition:width .3s ease}.storage-stats{display:flex;gap:24px;flex-wrap:wrap;font-size:12px;color:#667085}.storage-stats b{color:#101828}.storage-usage small{display:block;margin-top:9px;color:#98a2b3;font-size:11px}@media(max-width:650px){.storage-stats{gap:10px 18px}.storage-usage{padding:15px}}
-.model-guide{display:block;margin-top:6px;color:#98a2b3;font-size:11px;line-height:1.45}.model-guide strong{color:#667085}
+.model-guide{display:block;margin-top:8px;color:#667085;font-size:11px;line-height:1.4}.model-guide strong{color:#101828}.model-guide table{width:100%;border-collapse:collapse;margin-top:8px;font-size:10px;background:#f8fafc;border:1px solid #eaecf0;border-radius:8px;overflow:hidden}.model-guide td{padding:5px 6px;border-bottom:1px solid #eaecf0;vertical-align:top}.model-guide tr:last-child td{border-bottom:0}.model-guide td:first-child,.model-guide td:nth-child(4){width:22px;text-align:center;font-weight:700;color:#667085}.model-guide td:nth-child(2),.model-guide td:nth-child(5){width:72px;font-weight:700;color:#344054;white-space:nowrap}.model-guide td:nth-child(3),.model-guide td:nth-child(6){color:#667085}@media(max-width:650px){.model-guide table{font-size:9px}.model-guide td{padding:4px}.model-guide td:nth-child(2),.model-guide td:nth-child(5){width:60px}}
 </style></head>
 <body>
 <main class="wrap">
@@ -12,28 +12,28 @@
 </main>
 <div id="drawer" class="drawer hidden"><div class="drawer-card"><button id="drawerClose" class="x">×</button><h2 id="formTitle">Tambah Mobil</h2><form id="carForm"><input id="carId" type="hidden">
 <label>Merek
-<select id="brand" required>
-<option value="">Pilih Merek</option>
-<option value="Toyota">Toyota</option><option value="Mitsubishi">Mitsubishi</option><option value="Honda">Honda</option><option value="Daihatsu">Daihatsu</option><option value="Isuzu">Isuzu</option><option value="Suzuki">Suzuki</option><option value="Lainnya">Lainnya</option>
-</select>
+<select id="brand" required><option value="">Pilih Merek</option><option value="Toyota">Toyota</option><option value="Mitsubishi">Mitsubishi</option><option value="Honda">Honda</option><option value="Daihatsu">Daihatsu</option><option value="Isuzu">Isuzu</option><option value="Suzuki">Suzuki</option><option value="Lainnya">Lainnya</option></select>
 </label>
 <label id="customBrandWrap" class="hidden">Merek Lainnya<input id="customBrand" placeholder="Contoh: Mazda, Nissan, BMW"></label>
 <label>Nama<input id="name" required></label>
 <label>Model
-<select id="model" required>
-<option value="">Pilih Kategori Model</option>
-<option value="City Car">City Car</option><option value="Hatchback">Hatchback</option><option value="MPV">MPV</option><option value="SUV">SUV</option><option value="Sedan">Sedan</option><option value="Minivan">Minivan</option><option value="Minibus">Minibus</option><option value="Van">Van</option><option value="Pickup">Pickup</option><option value="Double Cabin">Double Cabin</option><option value="Crossover">Crossover</option><option value="Truk">Truk</option><option value="Luxury">Luxury</option>
-</select>
-<small class="model-guide"><strong>Panduan:</strong> City Car (Brio, Agya, Ayla, i10) · Hatchback (Jazz, Yaris, Swift, Polo) · MPV (Avanza, Xenia, Ertiga, Xpander) · SUV (Fortuner, Pajero Sport, CR-V, HR-V) · Sedan (Civic, Corolla Altis, Camry, Vios) · Minivan (Serena, Voxy, Alphard, Vellfire) · Minibus (Hiace, Elf, Gran Max) · Van (Gran Max, Luxio, Hiace) · Pickup (L300, Hilux, Triton, Carry) · Double Cabin (Hilux, Triton, Ranger, D-Max) · Crossover (Raize, Rocky, Creta, Seltos) · Truk (Canter, Fuso, Hino, Dutro) · Luxury (Alphard, Vellfire, Mercedes-Benz, BMW).</small>
+<select id="model" required><option value="">Pilih Kategori Model</option><option value="City Car">City Car</option><option value="Hatchback">Hatchback</option><option value="MPV">MPV</option><option value="SUV">SUV</option><option value="Sedan">Sedan</option><option value="Minivan">Minivan</option><option value="Minibus">Minibus</option><option value="Van">Van</option><option value="Pickup">Pickup</option><option value="Double Cabin">Double Cabin</option><option value="Crossover">Crossover</option><option value="Truk">Truk</option><option value="Luxury">Luxury</option></select>
+<div class="model-guide"><strong>Panduan Kategori Model</strong>
+<table><tbody>
+<tr><td>1</td><td>City Car</td><td>Brio, Agya, Ayla, i10</td><td>8</td><td>Van</td><td>Gran Max, Luxio, Hiace</td></tr>
+<tr><td>2</td><td>Hatchback</td><td>Jazz, Yaris, Swift, Polo</td><td>9</td><td>Pickup</td><td>L300, Hilux, Triton, Carry</td></tr>
+<tr><td>3</td><td>MPV</td><td>Avanza, Xenia, Ertiga, Xpander</td><td>10</td><td>Double Cabin</td><td>Hilux, Triton, Ranger, D-Max</td></tr>
+<tr><td>4</td><td>SUV</td><td>Fortuner, Pajero, CR-V, HR-V</td><td>11</td><td>Crossover</td><td>Raize, Rocky, Creta, Seltos</td></tr>
+<tr><td>5</td><td>Sedan</td><td>Civic, Altis, Camry, Vios</td><td>12</td><td>Truk</td><td>Canter, Fuso, Hino, Dutro</td></tr>
+<tr><td>6</td><td>Minivan</td><td>Serena, Voxy, Alphard, Vellfire</td><td>13</td><td>Luxury</td><td>Alphard, Vellfire, Mercedes-Benz, BMW</td></tr>
+<tr><td>7</td><td>Minibus</td><td>Hiace, Elf, Gran Max</td><td></td><td></td><td></td></tr>
+</tbody></table></div>
 </label>
 <div class="two"><label>Tahun<input id="year" type="number"></label><label>Kilometer<input id="km"></label></div>
 <div class="two"><label>Harga<input id="price" type="number"></label><label>Status<select id="status"><option>Tersedia</option><option>Stok Habis</option></select></label></div>
-<div class="two">
-<label>Transmisi<select id="transmission" required><option value="">Pilih Transmisi</option><option value="Manual">Manual</option><option value="Otomatis">Otomatis</option></select></label>
-<label>Bahan Bakar<select id="fuel" required><option value="">Pilih Bahan Bakar</option><option value="Bensin">Bensin</option><option value="Diesel">Diesel</option><option value="Hybrid">Hybrid</option><option value="Electric Vehicle">Electric Vehicle</option></select></label>
-</div>
+<div class="two"><label>Transmisi<select id="transmission" required><option value="">Pilih Transmisi</option><option value="Manual">Manual</option><option value="Otomatis">Otomatis</option></select></label><label>Bahan Bakar<select id="fuel" required><option value="">Pilih Bahan Bakar</option><option value="Bensin">Bensin</option><option value="Diesel">Diesel</option><option value="Hybrid">Hybrid</option><option value="Electric Vehicle">Electric Vehicle</option></select></label></div>
 <div class="two"><label>Warna<input id="color"></label><label>Kondisi<select id="condition"><option value="Bekas">Bekas</option><option value="Baru">Baru</option></select></label></div>
 <div class="photo-upload"><label class="photo-label">Foto Mobil</label><div id="dropZone" class="drop-zone"><input id="photoInput" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden><div class="drop-icon">📷</div><strong>Drag & Drop foto di sini</strong><span>atau</span><button type="button" id="choosePhotos" class="choose-btn">Pilih dari perangkat</button><small>Maksimal 10 foto • JPG, PNG, WebP</small></div><div id="photoPreview" class="photo-preview"></div></div>
 <label>Deskripsi<textarea id="description" rows="4"></textarea></label><button class="save">Simpan Mobil</button></form></div></div>
-<script src="config.js?v=3"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="admin.js?v=6"></script>
+<script src="config.js?v=3"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="admin.js?v=7"></script>
 </body></html>
