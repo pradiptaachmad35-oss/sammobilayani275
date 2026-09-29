@@ -5,3 +5,4 @@
 .login .logo{display:flex;justify-content:center;align-items:center;margin-bottom:14px}.login .logo img{display:block;width:min(250px,100%);height:auto;max-height:78px;object-fit:contain}.head .logo img{display:block;width:190px;height:auto;max-height:65px;object-fit:contain}.head .logo{display:flex;align-items:center}.head h1{margin:10px 0 0}
 
 .forgot-link{text-align:center;color:#0869bd;text-decoration:none;font-size:13px;font-weight:700;margin-top:2px}.forgot-link:hover{text-decoration:underline}
+.admin-price-cell{display:flex;align-items:center;gap:7px;white-space:nowrap}.nego-toggle{border:1px solid #d0d5dd;background:#fff;color:#667085;border-radius:6px;padding:5px 8px;font-size:10px;font-weight:800;cursor:pointer}.nego-toggle.active{background:#fff1f2;border-color:#fda4af;color:#c1121f}
