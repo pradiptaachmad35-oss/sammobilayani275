@@ -47,6 +47,7 @@ async function loadCars(){
   renderBrands();renderCars();
 }
 document.getElementById('clearFilter').addEventListener('click',()=>setBrand('Semua'));
+document.getElementById('heroStockBtn').addEventListener('click',e=>{e.preventDefault();setBrand('Semua');});
 document.getElementById('modalClose').addEventListener('click',()=>{document.getElementById('detailModal').classList.add('hidden');document.body.style.overflow='';});
 document.getElementById('detailModal').addEventListener('click',e=>{if(e.target.id==='detailModal')document.getElementById('modalClose').click();});
 document.getElementById('prevPhoto').addEventListener('click',()=>{if(activeCar){const n=activeCar.photos?.length||1;photoIndex=(photoIndex-1+n)%n;updateModal();}});
