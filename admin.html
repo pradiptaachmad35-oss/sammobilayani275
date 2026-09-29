@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin — SAM MOBIL</title><link rel="stylesheet" href="admin.css"><style>
 .storage-usage{margin-top:18px;background:#fff;border:1px solid #eaecf0;border-radius:15px;padding:18px 20px;box-shadow:0 3px 12px #10182808}.storage-usage>div:first-child{display:flex;justify-content:space-between;align-items:center;gap:12px}.storage-usage strong{font-size:15px}.storage-usage #storagePercent{font-size:12px;font-weight:800;color:#667085}.storage-bar{height:9px;background:#eaecf0;border-radius:999px;overflow:hidden;margin:13px 0 10px}.storage-bar span{display:block;height:100%;width:0;background:#0869bd;border-radius:999px;transition:width .3s ease}.storage-stats{display:flex;gap:24px;flex-wrap:wrap;font-size:12px;color:#667085}.storage-stats b{color:#101828}.storage-usage small{display:block;margin-top:9px;color:#98a2b3;font-size:11px}@media(max-width:650px){.storage-stats{gap:10px 18px}.storage-usage{padding:15px}}
+.model-guide{display:block;margin-top:6px;color:#98a2b3;font-size:11px;line-height:1.45}.model-guide strong{color:#667085}
 </style></head>
 <body>
 <main class="wrap">
@@ -17,7 +18,15 @@
 </select>
 </label>
 <label id="customBrandWrap" class="hidden">Merek Lainnya<input id="customBrand" placeholder="Contoh: Mazda, Nissan, BMW"></label>
-<label>Nama<input id="name" required></label><label>Model<input id="model"></label><div class="two"><label>Tahun<input id="year" type="number"></label><label>Kilometer<input id="km"></label></div>
+<label>Nama<input id="name" required></label>
+<label>Model
+<select id="model" required>
+<option value="">Pilih Kategori Model</option>
+<option value="City Car">City Car</option><option value="Hatchback">Hatchback</option><option value="MPV">MPV</option><option value="SUV">SUV</option><option value="Sedan">Sedan</option><option value="Minivan">Minivan</option><option value="Minibus">Minibus</option><option value="Van">Van</option><option value="Pickup">Pickup</option><option value="Double Cabin">Double Cabin</option><option value="Crossover">Crossover</option><option value="Truk">Truk</option><option value="Luxury">Luxury</option>
+</select>
+<small class="model-guide"><strong>Panduan:</strong> City Car (Brio, Agya, Ayla, i10) · Hatchback (Jazz, Yaris, Swift, Polo) · MPV (Avanza, Xenia, Ertiga, Xpander) · SUV (Fortuner, Pajero Sport, CR-V, HR-V) · Sedan (Civic, Corolla Altis, Camry, Vios) · Minivan (Serena, Voxy, Alphard, Vellfire) · Minibus (Hiace, Elf, Gran Max) · Van (Gran Max, Luxio, Hiace) · Pickup (L300, Hilux, Triton, Carry) · Double Cabin (Hilux, Triton, Ranger, D-Max) · Crossover (Raize, Rocky, Creta, Seltos) · Truk (Canter, Fuso, Hino, Dutro) · Luxury (Alphard, Vellfire, Mercedes-Benz, BMW).</small>
+</label>
+<div class="two"><label>Tahun<input id="year" type="number"></label><label>Kilometer<input id="km"></label></div>
 <div class="two"><label>Harga<input id="price" type="number"></label><label>Status<select id="status"><option>Tersedia</option><option>Stok Habis</option></select></label></div>
 <div class="two">
 <label>Transmisi<select id="transmission" required><option value="">Pilih Transmisi</option><option value="Manual">Manual</option><option value="Otomatis">Otomatis</option></select></label>
@@ -26,5 +35,5 @@
 <div class="two"><label>Warna<input id="color"></label><label>Kondisi<select id="condition"><option value="Bekas">Bekas</option><option value="Baru">Baru</option></select></label></div>
 <div class="photo-upload"><label class="photo-label">Foto Mobil</label><div id="dropZone" class="drop-zone"><input id="photoInput" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden><div class="drop-icon">📷</div><strong>Drag & Drop foto di sini</strong><span>atau</span><button type="button" id="choosePhotos" class="choose-btn">Pilih dari perangkat</button><small>Maksimal 10 foto • JPG, PNG, WebP</small></div><div id="photoPreview" class="photo-preview"></div></div>
 <label>Deskripsi<textarea id="description" rows="4"></textarea></label><button class="save">Simpan Mobil</button></form></div></div>
-<script src="config.js?v=3"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="admin.js?v=5"></script>
+<script src="config.js?v=3"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="admin.js?v=6"></script>
 </body></html>
