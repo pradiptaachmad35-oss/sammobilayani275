@@ -288,3 +288,30 @@ body:after{
 .detail-specs .spec-item strong{
   color:#172033;
 }
+
+/* stronger black bold specification text */
+.detail-specs .spec-item span{
+  color:#111827!important;
+  font-weight:900!important;
+  font-size:10px!important;
+}
+.detail-specs .spec-item strong{
+  color:#080b10!important;
+  font-weight:900!important;
+  font-size:14px!important;
+}
+.tiktok-link{
+  border-color:rgba(255,255,255,.18)!important;
+}
+.tiktok-logo{
+  width:20px;height:20px;display:inline-grid;place-items:center;
+  color:#fff;flex:0 0 20px;
+}
+.tiktok-logo svg{width:19px;height:19px;display:block}
+.tiktok-link:hover{
+  background:linear-gradient(135deg,rgba(0,242,234,.18),rgba(255,0,80,.16))!important;
+  border-color:rgba(255,255,255,.35)!important;
+}
+@media(max-width:760px){
+  .detail-specs .spec-item strong{font-size:13px!important}
+}
