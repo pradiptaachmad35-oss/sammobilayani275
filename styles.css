@@ -656,3 +656,36 @@ footer:after{
 .hero-wa-icon{
   width:22px!important;height:22px!important;
 }
+
+/* HERO: show each full photo without cropping */
+.hero-slides{
+  background:#061a32;
+}
+.hero-slide{
+  background-size:contain!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  background-color:#061a32;
+  isolation:isolate;
+}
+.hero-slide::before{
+  content:"";
+  position:absolute;
+  inset:-24px;
+  z-index:-1;
+  background-image:inherit;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  filter:blur(22px);
+  transform:scale(1.08);
+  opacity:.42;
+}
+.hero-slide::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background:linear-gradient(90deg,rgba(2,11,25,.18),rgba(2,13,29,.04) 55%,rgba(2,13,29,.16));
+  pointer-events:none;
+}
