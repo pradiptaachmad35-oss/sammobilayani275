@@ -20,6 +20,7 @@ function showAdmin(){
   loginView.classList.add('hidden');
   adminView.classList.remove('hidden');
   loadCars();
+  loadStorageUsage();
 }
 
 function showLogin(){
@@ -157,6 +158,65 @@ async function uploadPhotos(carId){
   return urls;
 }
 
+function formatStorage(bytes){
+  if(!bytes)return '0 MB';
+  if(bytes<1024*1024)return Math.round(bytes/1024)+' KB';
+  if(bytes<1024*1024*1024)return (bytes/1024/1024).toFixed(1)+' MB';
+  return (bytes/1024/1024/1024).toFixed(2)+' GB';
+}
+
+async function loadStorageUsage(){
+  const usedEl=document.getElementById('storageUsed');
+  const freeEl=document.getElementById('storageFree');
+  const filesEl=document.getElementById('storageFiles');
+  const percentEl=document.getElementById('storagePercent');
+  const barEl=document.getElementById('storageBarFill');
+  const quota=1024*1024*1024;
+  try{
+    let totalBytes=0;
+    let totalFiles=0;
+    const visited=new Set();
+
+    async function walk(folder=''){
+      if(visited.has(folder))return;
+      visited.add(folder);
+      let offset=0;
+      const limit=100;
+      while(true){
+        const {data,error}=await sb.storage.from('car-photos').list(folder,{limit,offset,sortBy:{column:'name',order:'asc'}});
+        if(error)throw error;
+        const items=data||[];
+        for(const item of items){
+          const size=Number(item.metadata?.size||0);
+          if(size>0 || item.metadata){
+            totalBytes+=size;
+            totalFiles++;
+          }else if(item.name){
+            await walk(folder?folder+'/'+item.name:item.name);
+          }
+        }
+        if(items.length<limit)break;
+        offset+=limit;
+      }
+    }
+
+    await walk('');
+    const percent=Math.min(100,(totalBytes/quota)*100);
+    const free=Math.max(0,quota-totalBytes);
+    usedEl.textContent=formatStorage(totalBytes);
+    freeEl.textContent=formatStorage(free);
+    percentEl.textContent=percent.toFixed(1)+'% terpakai';
+    barEl.style.width=percent+'%';
+    filesEl.textContent=`${totalFiles} file foto • Batas tampilan: 1 GB`;
+  }catch(error){
+    console.error('Storage usage error:',error);
+    usedEl.textContent='—';
+    freeEl.textContent='—';
+    percentEl.textContent='Tidak dapat dihitung';
+    filesEl.textContent='Gagal membaca penggunaan storage.';
+  }
+}
+
 loginForm.onsubmit=async e=>{
   e.preventDefault();
   showError('Memproses login...');
@@ -224,6 +284,7 @@ carForm.onsubmit=async e=>{
     if(error)throw error;
     drawer.classList.add('hidden');
     await loadCars();
+    loadStorageUsage();
     alert('Mobil berhasil disimpan.');
   }catch(error){
     console.error(error);
@@ -245,6 +306,7 @@ window.deleteCar=async id=>{
     return;
   }
   await loadCars();
+  loadStorageUsage();
 };
 
 (async()=>{
