@@ -44,10 +44,25 @@ function renderRows(){
   rows.innerHTML=cars.length?cars.map(c=>`<tr>
     <td><div class="unit"><img src="${c.photos?.[0]||'sam-storefront.jpeg'}"><div><strong>${escapeHtml(c.name)}</strong><br><small>${escapeHtml(c.brand)} • ${escapeHtml(c.model||'')}</small></div></div></td>
     <td>${c.year||'—'}</td>
-    <td>Rp ${Number(c.price||0).toLocaleString('id-ID')}</td>
+    <td><div class="admin-price-cell"><span>Rp ${Number(c.price||0).toLocaleString('id-ID')}</span><button type="button" class="nego-toggle ${c.nego?'active':''}" onclick="toggleNego('${c.id}')" title="Tampilkan label Nego">Nego</button></div></td>
     <td><span class="pill ${c.status!=='Tersedia'?'sold':''}">${escapeHtml(c.status)}</span></td>
     <td class="actions"><button onclick="editCar('${c.id}')">Edit</button><button onclick="deleteCar('${c.id}')">Hapus</button></td>
   </tr>`).join(''):`<tr><td colspan="5" style="text-align:center;padding:50px;color:#667085">Belum ada mobil. Klik "+ Tambah Mobil" untuk menambahkan unit.</td></tr>`;
+}
+
+function isNego(car){return !!car?.nego;}
+
+async function toggleNego(id){
+  const car=cars.find(c=>c.id===id);
+  if(!car)return;
+  const next=!isNego(car);
+  const {error}=await sb.from('cars').update({nego:next}).eq('id',id);
+  if(error){
+    alert('Kolom Nego belum dibuat di Supabase. Jalankan SQL: ALTER TABLE public.cars ADD COLUMN IF NOT EXISTS nego boolean NOT NULL DEFAULT false;');
+    return;
+  }
+  car.nego=next;
+  renderRows();
 }
 
 function escapeHtml(value){
