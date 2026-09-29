@@ -504,3 +504,36 @@ body:after{
   display:block!important;flex:0 0 27px!important;
 }
 .hero-wa-btn:hover .hero-wa-icon{filter:drop-shadow(0 0 8px rgba(37,211,102,.75))!important}
+
+/* final footer layout */
+.footer-inner{
+  display:grid!important;
+  grid-template-columns:1.25fr .85fr 1.7fr!important;
+  align-items:center!important;
+  gap:32px!important;
+  max-width:1240px!important;
+}
+.footer-brand{display:flex!important;align-items:center!important;gap:16px!important}
+.footer-brand img{width:220px!important;height:62px!important}
+.footer-brand strong{display:block;font-size:14px;white-space:nowrap}
+.footer-brand span{display:block;margin-top:5px;color:#b9c7d8;font-size:10px;line-height:1.3}
+.footer-contact{display:block!important;margin-left:0!important}
+.footer-contact-row{display:flex;align-items:center;gap:7px;flex-wrap:nowrap}
+.footer-contact-row a{display:inline-flex!important;align-items:center;justify-content:center;gap:7px;white-space:nowrap;padding:9px 11px!important}
+.footer-contact .footer-label{display:block!important;width:auto!important;margin:0 0 9px!important}
+.footer-address strong{font-size:14px}
+.footer-address span:not(.footer-label){font-size:10px}
+.tiktok-header .contact-icon{background:linear-gradient(135deg,rgba(0,242,234,.16),rgba(255,0,80,.18))!important;color:#fff!important}
+.tiktok-header:hover{border-color:rgba(255,255,255,.4)!important;box-shadow:0 10px 26px rgba(255,0,80,.12),0 0 20px rgba(0,242,234,.10)!important}
+.tiktok-header .tiktok-logo,.tiktok-logo{display:inline-grid;place-items:center;width:19px;height:19px;color:#fff}
+.tiktok-header .tiktok-logo svg,.tiktok-logo svg{width:18px;height:18px}
+.footer-contact-row .tiktok-link:hover{background:linear-gradient(135deg,rgba(0,242,234,.18),rgba(255,0,80,.16))!important}
+@media(max-width:1050px){
+  .footer-inner{grid-template-columns:1fr 1fr!important}
+  .footer-brand{grid-column:1/-1}
+}
+@media(max-width:760px){
+  .footer-inner{grid-template-columns:1fr!important;gap:22px!important}
+  .footer-contact-row{flex-wrap:wrap}
+  .footer-brand strong{white-space:normal}
+}
