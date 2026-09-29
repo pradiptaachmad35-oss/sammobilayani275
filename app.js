@@ -56,3 +56,17 @@ let touchStart=0;
 document.getElementById('detailImage').addEventListener('touchstart',e=>{touchStart=e.changedTouches[0].clientX;});
 document.getElementById('detailImage').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-touchStart;if(Math.abs(dx)>40)(dx<0?document.getElementById('nextPhoto'):document.getElementById('prevPhoto')).click();});
 loadCars();
+/* Homepage hero slideshow */
+const heroSlides=[...document.querySelectorAll('.hero-slide')];
+const heroDots=[...document.querySelectorAll('.hero-dots .dot')];
+let heroIndex=0;
+function showHeroSlide(i){
+  if(!heroSlides.length)return;
+  heroIndex=(i+heroSlides.length)%heroSlides.length;
+  heroSlides.forEach((el,n)=>el.classList.toggle('active',n===heroIndex));
+  heroDots.forEach((el,n)=>el.classList.toggle('active',n===heroIndex));
+}
+if(heroSlides.length>1){
+  setInterval(()=>showHeroSlide(heroIndex+1),5000);
+  heroDots.forEach((dot,i)=>dot.addEventListener('click',()=>showHeroSlide(i)));
+}
