@@ -795,3 +795,26 @@ footer:after{
     max-height:calc(92vh - 300px)!important;
   }
 }
+
+/* Gallery controls follow the actual photo while the photo panel scrolls */
+.detail-gallery{
+  display:block!important;
+  position:relative!important;
+}
+.detail-gallery img{
+  position:relative!important;
+}
+.gallery-prev,.gallery-next{
+  top:0!important;
+  transform:none!important;
+  position:absolute!important;
+  z-index:10!important;
+}
+.dots{
+  top:0!important;
+  bottom:auto!important;
+  transform:translateX(-50%)!important;
+  position:absolute!important;
+  z-index:11!important;
+  white-space:nowrap;
+}
